@@ -1,4 +1,4 @@
-# React &lt;CountDown /&gt; 
+# React Native Countdown Component 
 A light-weight countdown component for React Native
 
 * [Getting Started](#getting-started)
@@ -11,7 +11,7 @@ A light-weight countdown component for React Native
 You can install the module via `npm`.
 
 ```
-npm install react-countdown-now --save
+npm install rn-countdown-component --save
 ```
 
 ## Motivation
