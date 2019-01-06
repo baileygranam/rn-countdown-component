@@ -1,8 +1,9 @@
 {
   "name": "rn-countdown-component",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A light-weight countdown component for react native.",
   "license": "MIT",
+  "main": "index.js",
   "peerDependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.0.0",

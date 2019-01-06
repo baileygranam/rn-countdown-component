@@ -22,27 +22,29 @@ There is currently a lack in effective countdown timers for React Native applica
 A very simple and minimal example of how to set up a countdown which counts down from 10 seconds.
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import CountDown from 'rn-countdown-component';
+import Countdown from 'rn-countdown-component';
 
-ReactDOM.render(
-  <CountDown
+export default const CountdownApp (
+  <Countdown
     seconds={10}
-  />,
-  document.getElementById('root')
+  />
 );
+
 ```
 
 ## Props
 
 |Name|Type|Default|Description|
 |:--|:--:|:-----:|:----------|
-|[**seconds**](#seconds)|`number`|`required`|Length of countdown timer|
+|[**seconds**](#seconds)|`number`|`required`|Length of countdown|
 |[**play**](#play)|`boolean`|`true`|Countdown auto-start option|
 |[**format**](#format)|`object`|`['hours', 'minutes', 'seconds']`|Format of time displayed on countdown component|
 |[**strokeColor**](#strokeColor)|`string`|`black`|Color of stroke around the progress circle|
 |[**strokeWidth**](#strokeWidth) |`number`|`5`|The width in pixels of the stroke around the progress circle|
 |[**radius**](#radius)|`number`|`75`|Size of the progress circle|
+|[**onStart**](#onStart)|`function`|`null`|Action to perform when the countdown has been started|
+|[**onPause**](#onPause)|`function`|`null`|Action to perform when the countdown has been paused|
+|[**onFinish**](#onFinish)|`function`|`null`|Action to perform when the countdown has ended|
 
 ### `seconds`
 The `seconds` prop is the only required one and must be a `number`. This determines the time to count down from on the timer.
@@ -56,7 +58,7 @@ Valid values can be _(and more)_:
 Defines whether the countdown should start automatically or not. Defaults to `true`.
 
 ### `format`
-The format of the time to display on the timer component. Allowed types are, 'hours', 'minutes', and 'seconds'.
+The format of the time to display on the countdown component. Allowed types are, 'hours', 'minutes', and 'seconds'.
 
 ### `strokeColor`
 The `strokeColor` prop determines the color of the stroke of the progress circle. A `string` is the type.
@@ -70,6 +72,15 @@ The `strokeWidth` prop determines the width of the stroke of the progress circle
 
 ### `radius`
 The `radius` prop determines the number of the stroke of the progress circle. A `number` is the type.
+
+### `onStart`
+The `onStart` prop determines the action to perform when the countdown has started. A `function` is the type.
+
+### `onPause`
+The `onPause` prop determines the action to perform when the countdown has been paused. A `function` is the type.
+
+### `onFinish`
+The `onFinish` prop determines the action to perform when the countdown has finished. A `function` is the type.
 
 ## License
 

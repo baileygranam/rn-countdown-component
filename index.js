@@ -4,7 +4,7 @@ import { Button } from 'native-base'
 import ProgressCircle from 'react-native-progress-circle'
 import PropTypes from 'prop-types'
 
-class CountDown extends Component {
+class Countdown extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,6 +12,15 @@ class CountDown extends Component {
       play: props.play,
     }
 
+    /**
+     * Perform onStart action in the case that the component
+     * play prop is set to true.
+     */
+    if (props.play) {
+      props.onStart()
+    }
+
+    /* Action Binders. */
     this.tick = this.tick.bind(this)
     this.reset = this.reset.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -36,6 +45,17 @@ class CountDown extends Component {
    * Toggle pause/play on the countdown timer.
    */
   toggle() {
+    const { play } = this.state
+    const { onPause, onStart } = this.props
+
+    /* Action to perform when pausing the countdown. */
+    if (play) {
+      onPause()
+    /* Action to perform when starting/resuming the countdown. */
+    } else {
+      onStart()
+    }
+
     this.setState(prevState => ({ play: !prevState.play }))
   }
 
@@ -52,10 +72,16 @@ class CountDown extends Component {
    */
   tick() {
     const { play, timer } = this.state
+    const { onFinish } = this.props
     if (play && timer > 0) {
       this.setState(prevState => ({
         timer: prevState.timer - 1,
       }))
+    }
+
+    /* Action to perform when the countdown has finished. */
+    if (timer === 0) {
+      onFinish()
     }
   }
 
@@ -143,21 +169,27 @@ class CountDown extends Component {
   }
 }
 
-CountDown.propTypes = {
+Countdown.propTypes = {
   seconds: PropTypes.number.isRequired,
   play: PropTypes.bool,
   format: PropTypes.instanceOf(Array),
   strokeColor: PropTypes.string,
   strokeWidth: PropTypes.number,
   radius: PropTypes.number,
+  onFinish: PropTypes.func,
+  onPause: PropTypes.func,
+  onStart: PropTypes.func,
 }
 
-CountDown.defaultProps = {
+Countdown.defaultProps = {
   play: true,
   format: ['hours', 'minutes', 'seconds'],
   strokeColor: 'black',
   strokeWidth: 5,
   radius: 75,
+  onFinish: () => null,
+  onPause: () => null,
+  onStart: () => null,
 }
 
-export default CountDown
+export default Countdown
