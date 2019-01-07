@@ -1,9 +1,19 @@
 {
   "name": "rn-countdown-component",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A light-weight countdown component for react native.",
   "license": "MIT",
   "main": "index.js",
+  "homepage": "https://github.com/baileygranam/rn-countdown-component#readme",
+    "repository": {
+    "type" : "git",
+    "url" : "https://github.com/baileygranam/rn-countdown-component"
+  },
+  "author": {
+    "name": "Bailey Granam", 
+    "email": "bgranam@stetson.edu", 
+    "url": "https://github.com/baileygranam/" 
+  },
   "peerDependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
